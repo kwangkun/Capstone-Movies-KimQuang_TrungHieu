@@ -1,1 +1,1 @@
-# Capstone-Movies-KimQuang_TrungHieu
+# CapstoneREACTJS-Movies-KimQuang_TrungHieu
