@@ -6,7 +6,7 @@ const Detail = () => {
     return (
         <div>
             <HomeHeader />
-                abc
+                
             <HomeFooter />
         </div>
     )
