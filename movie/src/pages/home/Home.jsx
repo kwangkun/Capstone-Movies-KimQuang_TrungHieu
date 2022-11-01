@@ -5,9 +5,7 @@ import HomeFooter from '../../components/molecules/HomeHeader'
 const Home = () => {
     return (
         <div>
-            <HomeHeader />
 
-            <HomeFooter />
         </div>
     )
 }
