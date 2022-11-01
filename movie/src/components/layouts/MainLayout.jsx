@@ -7,11 +7,11 @@ import Footer from '../molecules/HomeFooter';
 const MainLayout = () => {
     return (
         <Container className='Main-layout'>
-            <Header />
+           
             <main className='main-outlet'>
                 <Outlet />
             </main>
-            <Footer />
+          
         </Container>
     )
 }
