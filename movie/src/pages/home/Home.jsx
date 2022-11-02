@@ -1,12 +1,14 @@
 import React from 'react'
-import HomeHeader from '../../components/molecules/HomeHeader'
 import HomeFooter from '../../components/molecules/HomeFooter'
+import HomeHeader from '../../components/molecules/HomeHeader'
+import HomeCarousel from './HomeCarousel'
+import HomeMenu from './HomeMenu'
 
 const Home = () => {
     return (
         <div>
-            <HomeHeader />
-             
+            <HomeCarousel />
+            <HomeMenu />
             <HomeFooter />
         </div>
     )
