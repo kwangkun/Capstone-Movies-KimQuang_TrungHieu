@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const HomeHeader = () => {
+export const HomeHeader = () => {
     return (
         <header className="p-4 bg-black bg-opacity-40  text-white fixed w-full z-10 header">
             <div className="container flex justify-between h-16 mx-auto">

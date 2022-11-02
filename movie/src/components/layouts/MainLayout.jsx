@@ -9,7 +9,9 @@ const MainLayout = () => {
     <Container className='MainLayout'>
 
       <HomeHeader />
-      <main className='main-content'> <Outlet /> </main>
+      <main className='main-content'>
+        <Outlet />
+      </main>
 
       <HomeFooter />
 
