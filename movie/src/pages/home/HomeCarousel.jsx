@@ -2,10 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useQuanLyPhim } from '../../reducers/quanLyPhim/quanLyPhimSelector'
 import { getMovieBannerList } from '../../reducers/quanLyPhim/quanLyPhimReducer'
-import { Carousel } from 'antd';
-
-
-
+import { Carousel } from 'antd'
 const contentStyle = {
     height: '690px',
     color: '#fff',
@@ -16,12 +13,17 @@ const contentStyle = {
 };
 
 const HomeCarousel = () => {
-    const dispatch = useDispatch
+
+    const dispatch = useDispatch()
     const { bannerList } = useQuanLyPhim()
+
     useEffect(() => {
+
         dispatch(getMovieBannerList())
     }, [])
+
     return (
+
         <div className='w-full'>
             <Carousel effect="fade">
                 {bannerList.map((item) => {
@@ -32,7 +34,9 @@ const HomeCarousel = () => {
                     </div>
                 })}
             </Carousel>
+
         </div>
+
 
     )
 }

@@ -12,12 +12,11 @@ export const { reducer: quanLyPhimReducer, actions: quanLyPhimActions } = create
   name: 'quanLyPhim',
   initialState,
   reducers: {
-    increase: (state, action) => {
-      state.number = state.number + action.payload
-    }
   },
   extraReducers: (builder) => {
+
     builder
+      //lấy ds banner
       .addCase(getMovieBannerList.pending, (state, action) => {
         state.isFetching = true
       })
@@ -29,10 +28,22 @@ export const { reducer: quanLyPhimReducer, actions: quanLyPhimActions } = create
         state.err = action.payload
         state.isFetching = false
       })
+      //lấy ds phim
+      .addCase(getMovieList.pending, (state, action) => {
+        state.isFetching = true
+      })
+      .addCase(getMovieList.fulfilled, (state, action) => {
+        state.getMovieBannerList = action.payload
+        state.isFetching = false
+      })
+      .addCase(getMovieList.rejected, (state, action) => {
+        state.err = action.payload
+        state.isFetching = false
+      })
   }
 })
 export const getMovieBannerList = createAsyncThunk(
-  "quanLiPhim/getMovieBannerList",
+  "quanLyPhim/getMovieBannerList",
   async (rejectWithValue) => {
     try {
       const result = await quanLyPhimService.getMovieBannerList();
@@ -40,5 +51,16 @@ export const getMovieBannerList = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
-  }
+  },
 );
+export const getMovieList = createAsyncThunk(
+  "quanLyPhim/getMovieList",
+  async (rejectWithValue) => {
+    try {
+      const result = await quanLyPhimService.getMovieList();
+      return result.data.content;
+    } catch (error) {
+      return rejectWithValue(error.respone.data)
+    }
+  }
+)
