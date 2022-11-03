@@ -7,6 +7,7 @@ const initialState = {
   isFetching: false,
   isFetchingDetail: false,
   isFetchingBanner: false,
+  err: undefined
 };
 export const { reducer: quanLyPhimReducer, actions: quanLyPhimActions } = createSlice({
   name: 'quanLyPhim',
@@ -21,7 +22,7 @@ export const { reducer: quanLyPhimReducer, actions: quanLyPhimActions } = create
         state.isFetching = true
       })
       .addCase(getMovieBannerList.fulfilled, (state, action) => {
-        state.getMovieBannerList = action.payload
+        state.bannerList = action.payload
         state.isFetching = false
       })
       .addCase(getMovieBannerList.rejected, (state, action) => {
@@ -33,7 +34,7 @@ export const { reducer: quanLyPhimReducer, actions: quanLyPhimActions } = create
         state.isFetching = true
       })
       .addCase(getMovieList.fulfilled, (state, action) => {
-        state.getMovieBannerList = action.payload
+        state.movieList = action.payload
         state.isFetching = false
       })
       .addCase(getMovieList.rejected, (state, action) => {
