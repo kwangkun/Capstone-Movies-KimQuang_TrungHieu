@@ -7,6 +7,7 @@ import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({
     quanLyPhimReducer,
+    quanLyRapReducer,
 });
 
 export const store = configureStore({
