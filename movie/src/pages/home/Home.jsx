@@ -1,12 +1,14 @@
 import React from 'react'
 import HomeCarousel from '../home/HomeCarousel'
-// import HomeMenu from './HomeMenu'
+import HomeCard from './HomeCard'
+import HomeMenu from './HomeMenu'
 
 const Home = () => {
     return (
-        <div>
+        <div className='overflow-hidden'>
             <HomeCarousel />
-            {/* <HomeMenu /> */}
+            <HomeCard className='items-center' />
+            <HomeMenu />
         </div>
     )
 }

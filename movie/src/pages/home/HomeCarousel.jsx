@@ -13,11 +13,9 @@ const contentStyle = {
     backgroundSize: "cover",
 };
 
-// phan footer nua a 
 const HomeCarousel = () => {
     const dispatch = useDispatch();
     const { bannerList } = useQuanLyPhim();
-    console.log({ bannerList })
     useEffect(() => {
         dispatch(getMovieBannerList());
     }, []);
