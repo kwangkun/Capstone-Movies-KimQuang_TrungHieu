@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+import { Navigate, useNavigate } from "react-router-dom";
 import { quanLyNguoiDungService } from "../../services/quanLyNguoiDungService"
 
 
@@ -25,10 +26,11 @@ export const loginAction = createAsyncThunk(
         try {
             const result = await quanLyNguoiDungService.login(data);
             if (result.data.statusCode === 200) {
-                
+                console.log('result:', result.data);
+                localStorage.setItem("USER_LOGIN", JSON.stringify(result.data.content))
+                localStorage.setItem("TOKEN", JSON.stringify(result.data.content.accessToken))
+                return result.data.response
             }
-
-            console.log('result:', result.data);
         } catch (error) {
             return console.log('error', error)
         }
