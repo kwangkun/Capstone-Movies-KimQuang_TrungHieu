@@ -65,7 +65,7 @@ const HomeMenu = () => {
                                                         <p className="text-black-500 diaChiCumRap">
                                                             ({cumrap.diaChi})
                                                         </p>
-                                                        <p className="text-red-400">Detail</p>
+                                                        <p className="text-black-400">Chi Tiết</p>
                                                     </div>
                                                 </div>
                                             ),

@@ -6,9 +6,12 @@ import HomeMenu from './HomeMenu'
 const Home = () => {
     return (
         <div className='overflow-hidden'>
+
             <HomeCarousel />
-            <HomeCard className='items-center' />
+            <HomeCard />
             <HomeMenu />
+
+
         </div>
     )
 }

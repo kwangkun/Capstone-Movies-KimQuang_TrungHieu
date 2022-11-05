@@ -2,12 +2,13 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { quanLyPhimService } from '../../services/quanLyPhimService';
 const initialState = {
   bannerList: [],
-  movieList: [],
   movieDetail: {},
   isFetching: false,
   isFetchingDetail: false,
   isFetchingBanner: false,
-  err: undefined
+  error: undefined,
+  infoMovie: {},
+  movieList: [],
 };
 export const { reducer: quanLyPhimReducer, actions: quanLyPhimActions } = createSlice({
   name: 'quanLyPhim',
@@ -19,27 +20,27 @@ export const { reducer: quanLyPhimReducer, actions: quanLyPhimActions } = create
     builder
       //lấy ds banner
       .addCase(getMovieBannerList.pending, (state, action) => {
-        state.isFetching = true
+        state.isFetchingBanner = true;
       })
       .addCase(getMovieBannerList.fulfilled, (state, action) => {
-        state.bannerList = action.payload
-        state.isFetching = false
+        state.isFetchingBanner = false;
+        state.bannerList = action.payload;
       })
       .addCase(getMovieBannerList.rejected, (state, action) => {
-        state.err = action.payload
-        state.isFetching = false
+        state.isFetchingBanner = false;
+        state.bannerList = action.payload;
       })
-      //lấy ds phim
+      // lay ds phim
       .addCase(getMovieList.pending, (state, action) => {
-        state.isFetching = true
+        state.isFetching = true;
       })
       .addCase(getMovieList.fulfilled, (state, action) => {
-        state.movieList = action.payload
-        state.isFetching = false
+        state.isFetching = false;
+        state.movieList = action.payload;
       })
       .addCase(getMovieList.rejected, (state, action) => {
-        state.err = action.payload
-        state.isFetching = false
+        state.isFetching = false;
+        state.movieList = action.payload;
       })
   }
 })
@@ -54,14 +55,15 @@ export const getMovieBannerList = createAsyncThunk(
     }
   },
 );
+
 export const getMovieList = createAsyncThunk(
-  "quanLyPhim/getMovieList",
-  async (rejectWithValue) => {
+  "quanLiPhim/getMovieList",
+  async (value = "", { rejectWithValue }) => {
     try {
-      const result = await quanLyPhimService.getMovieList();
+      const result = await quanLyPhimService.getMovieList(value);
       return result.data.content;
     } catch (error) {
-      return rejectWithValue(error.respone.data)
+      return rejectWithValue(error.response.data);
     }
   }
-)
+);

@@ -5,24 +5,25 @@ import { getMovieBannerList } from "../../reducers/quanLyPhim/quanLyPhimReducer"
 import { Carousel } from "antd";
 
 const contentStyle = {
-    height: "690px",
-    color: "#fff",
-    lineHeight: "160px",
-    textAlign: "center",
-    backgroundPosition: "center",
-    backgroundSize: "cover",
-};
+    height: '760px',
+    lineHeight: '160px',
+    textAlign: 'center',
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
 
+};
 const HomeCarousel = () => {
-    const dispatch = useDispatch();
-    const { bannerList } = useQuanLyPhim();
+
+    const dispatch = useDispatch()
+    const { bannerList } = useQuanLyPhim()
+
     useEffect(() => {
-        dispatch(getMovieBannerList());
-    }, []);
+        dispatch(getMovieBannerList())
+    }, [])
 
     return (
         <div className="w-full">
-            <Carousel effect="fade">
+            <Carousel effect="fade" autoplay >
                 {bannerList.map((item) => {
                     return (
                         <div key={item.maBanner}>
@@ -43,7 +44,9 @@ const HomeCarousel = () => {
                 })}
             </Carousel>
         </div>
-    );
-};
 
-export default HomeCarousel;
+
+    )
+}
+
+export default HomeCarousel
