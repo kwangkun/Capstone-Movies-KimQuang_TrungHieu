@@ -10,26 +10,16 @@ const Login = () => {
     })
 
     useEffect(() => {
-        let user = {}
-        let token = {}
         if (localStorage.getItem("USER_LOGIN")) {
-            user = JSON.parse(localStorage.getItem("USER_LOGIN"))
-            token = JSON.parse(localStorage.getItem("TOKEN"))
+            navigate(-1)
+            alert('Bạn đã đăng nhập!')
         }
-        console.log('user:', user)
-        // console.log('token:', token)
-    }, [])
+    })
 
-    let num = null
+    let sCode = localStorage.getItem("SCODE")
 
     const navigate = useNavigate()
 
-    if (localStorage.getItem("USER_LOGIN") !== '') {
-        num = -1
-        alert('Bạn đã đăng nhập!')
-    } else if (alert === 'Bạn đã đăng nhập!') {
-        navigate(-1)
-    }
     const dispatch = useDispatch()
 
     return (
@@ -43,7 +33,6 @@ const Login = () => {
                     </div>
                     <form className="p-12 md:p-24"
                         onSubmit={handleSubmit((value) => {
-                            // console.log(value);
                             dispatch(loginAction(value))
                         })}
                     >
@@ -59,12 +48,14 @@ const Login = () => {
                             </svg>
                             <input type="password" id="password" className="bg-gray-200 pl-12 py-2 md:py-4 focus:outline-none w-full" placeholder="Mật Khẩu" {...register('matKhau')} />
                         </div>
-                        <button onClick={() => {
-                            if (num === -1) {
-                                alert('Đăng nhập thành công!')
-                                navigate(num)
-                            }
-                        }} className="bg-gradient-to-b from-gray-700 to-gray-900 font-medium p-2 md:p-4 text-white uppercase w-full mt-4" >Đăng Nhập</button>
+                        <button
+                            onClick={() => {
+                                if (sCode === '200') {
+                                    alert('Đăng nhập thành công!')
+                                    navigate(-1)
+                                }
+                            }}
+                            className="bg-gradient-to-b from-gray-700 to-gray-900 font-medium p-2 md:p-4 text-white uppercase w-full mt-4" >Đăng Nhập</button>
                     </form>
                 </div>
             </div>
