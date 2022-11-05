@@ -2,6 +2,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import { registerAction } from '../../reducers/quanLyNguoiDung/quanLyNguoiDungReducer'
 
 const Register = () => {
     const { register, handleSubmit, reset } = useForm({
@@ -23,25 +24,35 @@ const Register = () => {
                         </svg>
                     </div>
                     <h3 className="text-2xl font-bold text-center">Đăng Ký</h3>
-                    <form >
+                    <form onSubmit={handleSubmit((value) => {
+                        dispatch(registerAction(value))
+                    })}>
                         <div className="mt-4">
                             <div>
                                 <label className="block" htmlFor="Name">Tài Khoản<label>
-                                    <input type="text" placeholder="Tài Khoản" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" />
-                                </label></label></div>
-                            <div className="mt-4">
-                                <label className="block" htmlFor="email">Email<label>
-                                    <input type="text" placeholder="Email" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" />
+                                    <input type="text" placeholder="Tài Khoản" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" {...register('taiKhoan')} />
                                 </label></label></div>
                             <div className="mt-4">
                                 <label className="block">Mật Khẩu<label>
-                                    <input type="password" placeholder="Mật Khẩu" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" />
+                                    <input type="password" placeholder="Mật Khẩu" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" {...register('matKhau')} />
                                 </label></label></div>
                             <div className="mt-4">
-                                <label className="block">Nhập Lại Mật Khẩu<label>
-                                    <input type="password" placeholder="Nhập Lại Mật Khẩu" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" />
+                                <label className="block" htmlFor="email">Email<label>
+                                    <input type="text" placeholder="Email" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" {...register('email')} />
                                 </label></label></div>
-                            <span className="text-xs text-red-400">Password must be same!</span>
+                            <div className="mt-4">
+                                <label className="block">Số Điện Thoại<label>
+                                    <input type="text" placeholder="Số Điện Thoại" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" {...register('soDt')} />
+                                </label></label></div>
+                            <div className="mt-4">
+                                <label className="block">Mã Nhóm<label>
+                                    <input type="text" placeholder="Mã Nhóm" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" {...register('maNhom')} />
+                                </label></label></div>
+                            <div className="mt-4">
+                                <label className="block">Họ Tên<label>
+                                    <input type="text" placeholder="Họ Tên" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" {...register('hoTen')} />
+                                </label></label></div>
+                            {/* <span className="text-xs text-red-400">Password must be same!</span> */}
                             <div className="flex">
                                 <button className="w-full px-6 py-2 mt-4 text-white bg-blue-600 rounded-lg hover:bg-blue-900">Tạo Tài Khoản</button>
                             </div>
