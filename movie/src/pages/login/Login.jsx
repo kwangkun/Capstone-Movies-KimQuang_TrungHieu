@@ -1,19 +1,18 @@
 import { useForm } from 'react-hook-form'
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { loginAction } from '../../reducers/quanLyNguoiDung/quanLyNguoiDungReducer'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { loginAction, quanLyNguoiDungActions } from '../../reducers/quanLyNguoiDung/quanLyNguoiDungReducer'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
-    const { register, handleSubmit, reset } = useForm({
-        mode: 'onBlur',
-    })
+    const { register, handleSubmit } = useForm()
+    // const { userLogin } = useSelector((state => state.quanLyNguoiDungReducer))
+
 
     useEffect(() => {
-        if (localStorage.getItem("USER_LOGIN")) {
-            navigate(-1)
-            alert('Bạn đã đăng nhập!')
-        }
+        // if (userLogin) {
+        //     navigate(-1)
+        // }
     })
 
     let sCode = localStorage.getItem("SCODE")
