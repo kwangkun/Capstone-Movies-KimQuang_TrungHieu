@@ -14,13 +14,19 @@ export const quanLyPhimService = {
     getMovieDetail: (idFilm) => {
         return api.get(`QuanLyPhim/LayThongTinPhim?MaPhim=${idFilm}`);
     },
-    themPhimUploadHinh: (data) => {
-        return api.post(`/api/QuanLyPhim/ThemPhimUploadHinh`, data)
+    postFilm: (film) => {
+        return api.post("QuanLyPhim/ThemPhimUploadHinh", film);
     },
-    postFilmUpDate: (data) => {
-        return api.post(`/api/QuanLyPhim/CapNhatPhimUpload`, data)
+    getInfoMovies: (idFilm) => {
+        return api.get(`QuanLyPhim/LayThongTinPhim?MaPhim=${idFilm}`);
     },
-    xoaPhim: (maPhim) => {
-        return api.delete(`/api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`)
+    postFilmUpdate: (formData) => {
+        return api.post(`QuanLyPhim/CapNhatPhimUpload`, formData);
+    },
+    deleteFilm: (idFilm) => {
+        return api.delete(`QuanLyPhim/XoaPhim?MaPhim=${idFilm}`);
+    },
+    getMovieBannerList: () => {
+        return api.get(`QuanLyPhim/LayDanhSachBanner`);
     },
 }

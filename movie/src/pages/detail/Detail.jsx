@@ -21,9 +21,9 @@ const MovieDetail = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getMovieDetail(params.movieIds));
-        dispatch(getLichChieuMovieDetail(params.movieIds));
-    }, [params.movieIds]);
+        dispatch(getMovieDetail());
+        dispatch(getLichChieuMovieDetail());
+    }, []);
     return (
         <div>
             <div

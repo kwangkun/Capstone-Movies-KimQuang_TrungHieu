@@ -1,5 +1,5 @@
 import React from 'react'
-import { useRoutes } from 'react-router-dom'
+import { useRoutes, Navigate } from 'react-router-dom'
 import AdminLayout from '../components/layouts/AdminLayout'
 import MainLayout from '../components/layouts/MainLayout'
 import UsersAdmin from '../pages/admin/usersAdmin/UsersAdmin'
@@ -10,14 +10,19 @@ import Login from '../pages/login/Login'
 import News from '../pages/news/News'
 import Register from '../pages/register/Register'
 import BookingTicket from '../pages/BookingTicket/BookingTicket'
-import FilmsAdmin from '../pages/admin/filmsAdmin/FilmsAdmin'
-
+import Films from '../pages/admin/filmsAdmin/Films'
+import CreateFilms from '../pages/admin/filmsAdmin/CreateFilms'
+import CreateShowTime from '../pages/admin/filmsAdmin/CreateShowTime'
 const Routers = () => {
     const routing = useRoutes([
         {
             path: '/',
             element: <MainLayout />,
             children: [
+                {
+                    path: '',
+                    element: <Navigate to='home' />
+                },
                 {
                     path: 'home',
                     element: <Home />
@@ -36,12 +41,12 @@ const Routers = () => {
                 },
                 {
                     path: 'contact',
-                    element: <Contact />
+                    element: 'No Content'
 
                 },
                 {
                     path: 'news',
-                    element: <News />
+                    element: 'No Content'
                 },
                 {
                     path: 'ticketroom/:id',
@@ -58,10 +63,20 @@ const Routers = () => {
                     path: 'users',
                     element: <UsersAdmin />
                 },
-                // {
-                //     path: 'films',
-                //     element: <FilmsAdmin />
-                // },
+                {
+                    path: 'films',
+                    element: <Films />
+                },
+                {
+                    path: 'createfilms',
+                    element: <CreateFilms />
+                },
+                {
+                    path: 'createShowTime',
+                    element: <CreateShowTime />
+                }
+
+
             ]
         }
     ])
