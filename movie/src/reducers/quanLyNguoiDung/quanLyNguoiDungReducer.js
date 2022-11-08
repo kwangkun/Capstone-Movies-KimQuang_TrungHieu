@@ -151,6 +151,7 @@ export const registerAction = createAsyncThunk(
     async (data, { rejectWithValue }) => {
         try {
             const result = await quanLyNguoiDungService.register(data)
+            console.log(result.data.content)
             return result.data.content
         } catch (error) {
             return rejectWithValue(error.response.data)
@@ -175,7 +176,7 @@ export const getUserListAction = createAsyncThunk(
     async (data, { rejectWithValue }) => {
         try {
             const result = await quanLyNguoiDungService.getUserList(data)
-            // console.log("layDanhSachNguoiDung", result.data.content);
+            console.log("layDanhSachNguoiDung", result.data.content);
             return result.data.content
         } catch (error) {
             return rejectWithValue(error.response.data)

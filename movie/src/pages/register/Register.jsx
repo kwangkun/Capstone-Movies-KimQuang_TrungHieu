@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { registerAction } from '../../reducers/quanLyNguoiDung/quanLyNguoiDungReducer'
 
 const Register = () => {
-    const { register, handleSubmit, reset } = useForm({
-        mode: 'onBlur',
-    })
+    const { register, handleSubmit } = useForm()
 
     const dispatch = useDispatch()
+
+    // useEffect(() => {
+    //     dispatch(quanLyNguoiDungActions.register())
+    // }, []);
 
 
     return (
