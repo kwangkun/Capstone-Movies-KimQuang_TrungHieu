@@ -4,15 +4,13 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { quanLyNguoiDungActions, deleteUserAction, getUserListAction } from '../../../reducers/quanLyNguoiDung/quanLyNguoiDungReducer'
+import { quanLyNguoiDungActions, deleteUserAction, getUserListAction } from '../../../reducers/quanLyNguoiDung/index'
 
 const UsersAdmin = () => {
     const { register, handleSubmit } = useForm()
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const deleteUser = useSelector((state) => state.quanLyNguoiDungReducer)
-    const errDeleteUser = useSelector((state) => state.quanLyNguoiDungReducer)
-    const userList = useSelector((state) => state.quanLyNguoiDungReducer)
+    const { deleteUser, errDeleteUser, userList } = useSelector((state) => state.quanLyNguoiDungReducer)
     const [searchParams, setSearchParams] = useSearchParams()
     const [keyword, setKeyword] = useState()
     const [password, setPassword] = useState()
@@ -21,10 +19,10 @@ const UsersAdmin = () => {
         dispatch(getUserListAction())
     }, [])
 
-    // useEffect(() => {
-    //     dispatch(getUserListAction(`${keyword}${searchParams.get('tuKhoa')}`))
-    // }, [deleteUser, searchParams])
-
+    useEffect(() => {
+        dispatch(getUserListAction(`${keyword}${searchParams.get('tuKhoa')}`))
+    }, [deleteUser, searchParams])
+    console.log(userList)
     return (
         <div className='UsersAdmin p-3'>
             <p className='font-bold text-xl mb-3'>Quản lý người dùng</p>
