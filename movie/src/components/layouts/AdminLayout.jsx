@@ -7,7 +7,7 @@ const AdminLayout = () => {
     const active = ({ isActive }) => isActive ? { backgroundColor: '#398dff' } : undefined
     const user = JSON.parse(localStorage.getItem("USER_LOGIN"))
     const navigate = useNavigate()
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
 
     return (
         <div className='container'>
@@ -27,7 +27,9 @@ const AdminLayout = () => {
                             Chào admin! {user.taiKhoan}
                         </NavLink>
                         <button onClick={() => {
-                            dispatch(quanLyNguoiDungActions.logout());
+                            // dispatch(quanLyNguoiDungActions.logout());
+                            localStorage.removeItem("USER_LOGIN")
+                            localStorage.removeItem("ACCESS_TOKEN")
                             navigate("/home");
                         }} className="inline-block px-4 py-2 text-black bg-white rounded-md shadow hover:bg-blue-500 hover:text-black transition duration-300">
                             Đăng xuất
