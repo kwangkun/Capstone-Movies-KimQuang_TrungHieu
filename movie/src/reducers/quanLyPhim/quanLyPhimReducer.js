@@ -42,6 +42,17 @@ export const { reducer: quanLyPhimReducer, actions: quanLyPhimActions } = create
         state.isFetching = false;
         state.movieList = action.payload;
       })
+      .addCase(getMovieDetail.pending, (state, action) => {
+        state.isFetchingDetail = true;
+      })
+      .addCase(getMovieDetail.fulfilled, (state, action) => {
+        state.isFetchingDetail = false;
+        state.movieDetail = action.payload;
+      })
+      .addCase(getMovieDetail.rejected, (state, action) => {
+        state.isFetchingDetail = false;
+        state.movieDetail = action.payload;
+      })
   }
 })
 export const getMovieBannerList = createAsyncThunk(
@@ -57,10 +68,23 @@ export const getMovieBannerList = createAsyncThunk(
 );
 
 export const getMovieList = createAsyncThunk(
-  "quanLiPhim/getMovieList",
+  "quanLyPhim/getMovieList",
   async (value = "", { rejectWithValue }) => {
     try {
       const result = await quanLyPhimService.getMovieList(value);
+      return result.data.content;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const getMovieDetail = createAsyncThunk(
+  "quanLyPhim/getMovieDetail",
+  async (idFilm, { rejectWithValue }) => {
+    try {
+      const result = await quanLyPhimService.getMovieDetail(idFilm);
+
       return result.data.content;
     } catch (error) {
       return rejectWithValue(error.response.data);

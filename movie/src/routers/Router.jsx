@@ -38,7 +38,8 @@ const Routers = () => {
                 {
                     path: 'news',
                     element: <News />
-                }
+                },
+
             ]
         }
     ])

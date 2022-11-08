@@ -11,4 +11,7 @@ export const quanLyPhimService = {
             return api.get(`QuanLyPhim/LayDanhSachPhim?maNhom=GP01&tenPhim=${value}`);
         }
     },
+    getMovieDetail: (idFilm) => {
+        return api.get(`QuanLyPhim/LayThongTinPhim?MaPhim=${idFilm}`);
+    },
 }
