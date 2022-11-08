@@ -53,6 +53,18 @@ export const { reducer: quanLyPhimReducer, actions: quanLyPhimActions } = create
         state.isFetchingDetail = false;
         state.movieDetail = action.payload;
       })
+      // lay thong tin phim
+      .addCase(getInfoMovies.pending, (state, action) => {
+        state.isFetchingDetail = true;
+      })
+      .addCase(getInfoMovies.fulfilled, (state, action) => {
+        state.isFetchingDetail = false;
+        state.infoMovie = action.payload;
+      })
+      .addCase(getInfoMovies.rejected, (state, action) => {
+        state.isFetchingDetail = false;
+        state.infoMovie = action.payload;
+      });
   }
 })
 export const getMovieBannerList = createAsyncThunk(
@@ -88,6 +100,44 @@ export const getMovieDetail = createAsyncThunk(
       return result.data.content;
     } catch (error) {
       return rejectWithValue(error.response.data);
+    }
+  }
+);
+export const getInfoMovies = createAsyncThunk(
+  "quanLiPhim/getInfoMovies",
+  async (idFilm, { rejectWithValue }) => {
+    try {
+      const result = await quanLyPhimService.getInfoMovies(idFilm);
+      return result.data.content;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+export const deleteFilm = createAsyncThunk(
+  "quanLiPhim/deleteFilm",
+  async (idFilm, { dispatch, rejectWithValue }) => {
+    try {
+      await quanLyPhimService.deleteFilm(idFilm);
+      alert("xoá phim thành công");
+      dispatch(getMovieList());
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+export const postFilmUpdate = createAsyncThunk(
+  "quanLiPhim/postFilmUpdate",
+  async (formData, { dispatch, rejectWithValue }) => {
+    console.log(rejectWithValue);
+    try {
+      await quanLyPhimService.postFilmUpdate(formData);
+
+      alert("cập nhật thành công");
+      dispatch(getMovieList());
+    } catch (err) {
+      return rejectWithValue(err.response.data);
     }
   }
 );

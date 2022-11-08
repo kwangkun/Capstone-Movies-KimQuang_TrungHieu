@@ -9,6 +9,7 @@ import Home from '../pages/home/Home'
 import Login from '../pages/login/Login'
 import News from '../pages/news/News'
 import Register from '../pages/register/Register'
+import BookingTicket from '../pages/BookingTicket/BookingTicket'
 
 const Routers = () => {
     const routing = useRoutes([
@@ -41,6 +42,10 @@ const Routers = () => {
                     path: 'news',
                     element: <News />
                 },
+                {
+                    path: 'ticketroom/:id',
+                    element: <BookingTicket />
+                }
 
             ]
         },

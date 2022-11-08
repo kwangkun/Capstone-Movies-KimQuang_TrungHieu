@@ -14,4 +14,16 @@ export const quanLyPhimService = {
     getMovieDetail: (idFilm) => {
         return api.get(`QuanLyPhim/LayThongTinPhim?MaPhim=${idFilm}`);
     },
+    postFilm: (film) => {
+        return api.post("QuanLyPhim/ThemPhimUploadHinh", film);
+    },
+    getInfoMovies: (idFilm) => {
+        return api.get(`QuanLyPhim/LayThongTinPhim?MaPhim=${idFilm}`);
+    },
+    postFilmUpdate: (formData) => {
+        return api.post(`QuanLyPhim/CapNhatPhimUpload`, formData);
+    },
+    deleteFilm: (idFilm) => {
+        return api.delete(`QuanLyPhim/XoaPhim?MaPhim=${idFilm}`);
+    },
 }
