@@ -10,6 +10,7 @@ import Login from '../pages/login/Login'
 import News from '../pages/news/News'
 import Register from '../pages/register/Register'
 import BookingTicket from '../pages/BookingTicket/BookingTicket'
+import FilmsAdmin from '../pages/admin/filmsAdmin/FilmsAdmin'
 
 const Routers = () => {
     const routing = useRoutes([
@@ -57,7 +58,10 @@ const Routers = () => {
                     path: 'users',
                     element: <UsersAdmin />
                 },
-                
+                // {
+                //     path: 'films',
+                //     element: <FilmsAdmin />
+                // },
             ]
         }
     ])
