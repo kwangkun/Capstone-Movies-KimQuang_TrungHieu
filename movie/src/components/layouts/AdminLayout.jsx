@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
-import { quanLyNguoiDungActions } from '../../reducers/quanLyNguoiDung/quanLyNguoiDungReducer';
+import { quanLyNguoiDungActions } from '../../reducers/quanLyNguoiDung';
 
 const AdminLayout = () => {
     const active = ({ isActive }) => isActive ? { backgroundColor: '#398dff' } : undefined
@@ -23,7 +23,7 @@ const AdminLayout = () => {
                 </div>
                 <div className='flex-1'>
                     <div className='text-right bg-white p-3 space-x-2'>
-                        <NavLink to="/userinfo" className="inline-block text-lg rounded-lg py-2 px-4 text-white bg-blue-700 hover:bg-blue-500 hover:text-white transition duration-300">
+                        <NavLink to="/userinformation" className="inline-block text-lg rounded-lg py-2 px-4 text-white bg-blue-700 hover:bg-blue-500 hover:text-white transition duration-300">
                             Chào admin! {user.taiKhoan}
                         </NavLink>
                         <button onClick={() => {
