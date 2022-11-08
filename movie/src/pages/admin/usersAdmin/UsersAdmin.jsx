@@ -69,7 +69,7 @@ const UsersAdmin = () => {
                             <td className='w-36 break-words'>{nguoiDung.soDT}</td>
                             <td className='w-36 break-words'>{nguoiDung.maLoaiNguoiDung === 'KhachHang' ? 'Khách Hàng' : 'Quản trị'}</td>
                             <td className='flex-1 space-x-2'>
-                                <button onClick={() => navigate(`suanguoidung/${nguoiDung.taiKhoan}`)} className='bg-green-500 p-1 rounded-md shadow text-white hover:bg-green-800'>Sửa</button>
+                                <button onClick={() => navigate(`edituser/${nguoiDung.taiKhoan}`)} className='bg-green-500 p-1 rounded-md shadow text-white hover:bg-green-800'>Sửa</button>
                                 <button onClick={() => { dispatch(deleteUserAction(nguoiDung.taiKhoan)) }} className='bg-red-500 p-1 rounded-md shadow text-white hover:bg-red-800'>Xoá</button>
                             </td>
                         </tr>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
-import { quanLyNguoiDungActions } from '../../reducers/quanLyNguoiDung/quanLyNguoiDungReducer';
+import { quanLyNguoiDungActions } from '../../reducers/quanLyNguoiDung';
 
 const AdminLayout = () => {
     const active = ({ isActive }) => isActive ? { backgroundColor: '#398dff' } : undefined

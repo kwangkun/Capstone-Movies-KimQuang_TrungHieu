@@ -88,10 +88,9 @@ export const getRapMovieList = createAsyncThunk(
 );
 export const getLichChieuMovieDetail = createAsyncThunk(
     "quanLyRap/getLichChieuMovieDetail",
-    async (idFilm, { dispatch, getState, rejectWithValue }) => {
+    async (idFilm, { rejectWithValue }) => {
         try {
             const result = await quanLyRapService.getLichChieuMovieDetail(idFilm);
-
             return result.data.content;
         } catch (error) {
             return rejectWithValue(error.response.data);
