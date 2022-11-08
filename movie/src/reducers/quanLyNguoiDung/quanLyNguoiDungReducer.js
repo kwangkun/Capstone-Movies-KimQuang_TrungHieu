@@ -10,8 +10,8 @@ const initialState = {
     deleteUser: null, isFetchingdeleteUser: false, errDeleteUser: undefined,
     getUserInfo: null, isFetchingGetUserInfo: false,
     updateUserInfo: null, isFetchingUpdateUserInfo: false, errUpdateUserInfo: undefined,
-    userSearch: null, isFetchingUserSearch: false, 
-    userType: null, isFetchingUserType: false, 
+    userSearch: null, isFetchingUserSearch: false,
+    userType: null, isFetchingUserType: false,
 
 }
 
@@ -19,14 +19,14 @@ export const { reducer: quanLyNguoiDungReducer, action: quanLyNguoiDungActions }
     name: 'quanLyNguoiDung',
     initialState,
     reducers: {
-        login: (state, action) => {
-            state.errUserLogin = undefined
-        },
         logout: (state, action) => {
             state.userLogin = null
             state.userRegister = null
             localStorage.removeItem("USER_LOGIN")
             localStorage.removeItem("ACCESS_TOKEN")
+        },
+        login: (state, action) => {
+            state.errUserLogin = undefined
         },
         register: (state, action) => {
             state.errUserRegister = undefined

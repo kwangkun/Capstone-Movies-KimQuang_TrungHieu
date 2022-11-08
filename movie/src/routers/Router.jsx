@@ -11,6 +11,7 @@ import News from '../pages/news/News'
 import Register from '../pages/register/Register'
 import BookingTicket from '../pages/BookingTicket/BookingTicket'
 import FilmsAdmin from '../pages/admin/filmsAdmin/FilmsAdmin'
+import EditUser from '../pages/admin/usersAdmin/EditUser'
 
 const Routers = () => {
     const routing = useRoutes([
@@ -57,6 +58,10 @@ const Routers = () => {
                 {
                     path: 'users',
                     element: <UsersAdmin />
+                },
+                {
+                    path: 'user/edituser/:id',
+                    element: <EditUser />
                 },
                 // {
                 //     path: 'films',

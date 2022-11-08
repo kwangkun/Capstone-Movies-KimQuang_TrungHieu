@@ -136,7 +136,7 @@ export const getMovieDetail = createAsyncThunk(
   async (idFilm, { rejectWithValue }) => {
     try {
       const result = await quanLyPhimService.getMovieDetail(idFilm);
-
+      console.log(result)
       return result.data.content;
     } catch (error) {
       return rejectWithValue(error.response.data);
