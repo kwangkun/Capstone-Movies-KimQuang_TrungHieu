@@ -18,8 +18,12 @@ const UsersAdmin = () => {
     const [password, setPassword] = useState()
 
     useEffect(() => {
-        dispatch(getUserListAction(`${keyword}${searchParams.get('tuKhoa')}`))
-    }, [deleteUser, searchParams])
+        dispatch(getUserListAction())
+    }, [])
+
+    // useEffect(() => {
+    //     dispatch(getUserListAction(`${keyword}${searchParams.get('tuKhoa')}`))
+    // }, [deleteUser, searchParams])
 
     return (
         <div className='UsersAdmin p-3'>
@@ -41,13 +45,13 @@ const UsersAdmin = () => {
                 <thead className='block'>
                     <tr className='text-left border-b bg-gray-300 pr-5 pl-3 flex py-1'>
                         <th className='w-10'>STT</th>
-                        <th className='w-36'>Tài khoản</th>
-                        <th className='w-36'>Mật khẩu</th>
-                        <th className='w-36'>Họ tên</th>
+                        <th className='w-36'>Tài Khoản</th>
+                        <th className='w-36'>Mật Khẩu</th>
+                        <th className='w-36'>Họ Tên</th>
                         <th className='w-36'>Email</th>
-                        <th className='w-36'>Điện thoại</th>
-                        <th className='w-36'>Người dùng</th>
-                        <th className='flex-1'>Hành động</th>
+                        <th className='w-36'>Điện Thoại</th>
+                        <th className='w-36'>Người Dùng</th>
+                        <th className='flex-1'>Hành Động</th>
                     </tr>
                 </thead>
                 <tbody className='block h-[500px] overflow-auto'>
@@ -67,7 +71,7 @@ const UsersAdmin = () => {
                             <td className='w-36 break-words'>{nguoiDung.soDT}</td>
                             <td className='w-36 break-words'>{nguoiDung.maLoaiNguoiDung === 'KhachHang' ? 'Khách Hàng' : 'Quản trị'}</td>
                             <td className='flex-1 space-x-2'>
-                                <button onClick={() => navigate(`suanguoidung/${nguoiDung.taiKhoan}`)} className='bg-green-500 p-1 rounded-md shadow text-white hover:bg-green-800'>sửa</button>
+                                <button onClick={() => navigate(`suanguoidung/${nguoiDung.taiKhoan}`)} className='bg-green-500 p-1 rounded-md shadow text-white hover:bg-green-800'>Sửa</button>
                                 <button onClick={() => { dispatch(deleteUserAction(nguoiDung.taiKhoan)) }} className='bg-red-500 p-1 rounded-md shadow text-white hover:bg-red-800'>Xoá</button>
                             </td>
                         </tr>
