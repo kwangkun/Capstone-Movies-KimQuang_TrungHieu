@@ -126,7 +126,7 @@ function ChonGhe() {
 
 function KetQuaDatVe() {
     const dispatch = useDispatch()
-    const { userInfoAction } = useSelector(state => state.quanLyNguoiDungReducer)
+    const { ttTaiKhoan } = useSelector(state => state.quanLyNguoiDungReducer)
     const { ketQuaDatVe } = useSelector(state => state.quanLyDatVeReducer)
 
     useEffect(() => {
@@ -136,13 +136,13 @@ function KetQuaDatVe() {
     return (
         <div className='KetQuaDatVe'>
             <div className='text-lg font-semibold border-b pb-3'>
-                <span>Tài khoản: </span><span className='text-amber-500 mr-2'>{userInfoAction?.taiKhoan}</span>
-                <span>Email: </span><span className='text-amber-500 mr-2'>{userInfoAction?.email}</span>
-                <span>Họ tên: </span><span className='text-amber-500 mr-2'>{userInfoAction?.hoTen}</span>
-                <span>Số điện thoại: </span><span className='text-amber-500'>{userInfoAction?.soDT}</span>
+                <span>Tài khoản: </span><span className='text-amber-500 mr-2'>{ttTaiKhoan?.taiKhoan}</span>
+                <span>Email: </span><span className='text-amber-500 mr-2'>{ttTaiKhoan?.email}</span>
+                <span>Họ tên: </span><span className='text-amber-500 mr-2'>{ttTaiKhoan?.hoTen}</span>
+                <span>Số điện thoại: </span><span className='text-amber-500'>{ttTaiKhoan?.soDT}</span>
             </div>
             <div>
-                {userInfoAction?.thongTinDatVe.map((ve, i) => (
+                {ttTaiKhoan?.thongTinDatVe.map((ve, i) => (
                     <div key={i} className='py-2 border-b grid grid-cols-12'>
                         <div className='col-span-4 md:col-span-2 lg:col-span-1'>
                             <img src={ve.hinhAnh} alt="" className='w-full' />

@@ -78,7 +78,6 @@ export const getRapMovieList = createAsyncThunk(
     async (data, { dispatch, getState, rejectWithValue }) => {
         try {
             const value = getState();
-            console.log(value);
             const result = await quanLyRapService.getRapMovieList();
 
             return result.data.content;

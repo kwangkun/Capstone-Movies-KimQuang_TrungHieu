@@ -9,11 +9,26 @@ const initialState = {
   error: undefined,
   infoMovie: {},
   movieList: [],
+  postFilm: null, isFetchPostPhim: false, errPostFilm: undefined,
+  delFilm: null, isFetchDelFilm: false, errDelFilm: undefined,
+  upDateFilm: null, isFetchUpDateFilm: false, errUpDateFilm: undefined
 };
 export const { reducer: quanLyPhimReducer, actions: quanLyPhimActions } = createSlice({
   name: 'quanLyPhim',
   initialState,
   reducers: {
+    postFilm: (state, action) => {
+      state.postFilm = null
+      state.errPostFilm = undefined
+    },
+    suaPhim: (state, action) => {
+      state.upDateFilm = null
+      state.errUpDateFilm = undefined
+    },
+    xoaPhim: (state, action) => {
+      state.delFilm = null
+      state.errDelFlim = undefined
+    }
   },
   extraReducers: (builder) => {
 
@@ -42,6 +57,7 @@ export const { reducer: quanLyPhimReducer, actions: quanLyPhimActions } = create
         state.isFetching = false;
         state.movieList = action.payload;
       })
+      // lay ds phim detail
       .addCase(getMovieDetail.pending, (state, action) => {
         state.isFetchingDetail = true;
       })
@@ -54,17 +70,41 @@ export const { reducer: quanLyPhimReducer, actions: quanLyPhimActions } = create
         state.movieDetail = action.payload;
       })
       // lay thong tin phim
-      .addCase(getInfoMovies.pending, (state, action) => {
-        state.isFetchingDetail = true;
+      .addCase(postFilmUploadHinh.pending, (state, action) => {
+        state.isFetchPostPhim = true
+      }).addCase(postFilmUploadHinh.fulfilled, (state, action) => {
+        state.isFetchPostPhim = false
+        state.postFilm = action.payload
+        state.errPostFilm = undefined
+      }).addCase(postFilmUploadHinh.rejected, (state, action) => {
+        state.isFetchPostPhim = false
+        state.errPostFilm = action.payload
+        state.postFilm = null
       })
-      .addCase(getInfoMovies.fulfilled, (state, action) => {
-        state.isFetchingDetail = false;
-        state.infoMovie = action.payload;
+      //Xoá phim
+      .addCase(xoaPhim.pending, (state, action) => {
+        state.isFetchDelFilm = true
+      }).addCase(xoaPhim.fulfilled, (state, action) => {
+        state.isFetchDelFilm = false
+        state.delFilm = action.payload
+        state.errDelFilm = undefined
+      }).addCase(xoaPhim.rejected, (state, action) => {
+        state.isFetchDelFilm = false
+        state.errPostFilm = action.payload
+        state.delFilm = null
       })
-      .addCase(getInfoMovies.rejected, (state, action) => {
-        state.isFetchingDetail = false;
-        state.infoMovie = action.payload;
-      });
+      // Cập nhật phim
+      .addCase(postFilmUpDate.pending, (state, action) => {
+        state.isFetchUpDateFilm = true
+      }).addCase(postFilmUpDate.fulfilled, (state, action) => {
+        state.isFetchUpDateFilm = false
+        state.upDateFilm = action.payload
+        state.errUpDateFilm = undefined
+      }).addCase(postFilmUpDate.rejected, (state, action) => {
+        state.isFetchUpDateFilm = false
+        state.errUpDateFilm = action.payload
+        state.upDateFilm = null
+      })
   }
 })
 export const getMovieBannerList = createAsyncThunk(
@@ -103,41 +143,33 @@ export const getMovieDetail = createAsyncThunk(
     }
   }
 );
-export const getInfoMovies = createAsyncThunk(
-  "quanLiPhim/getInfoMovies",
-  async (idFilm, { rejectWithValue }) => {
+export const postFilmUploadHinh = createAsyncThunk('quanLyPhim/postFilmUploadHinh',
+  async (data, { rejectWithValue }) => {
     try {
-      const result = await quanLyPhimService.getInfoMovies(idFilm);
-      return result.data.content;
+      const result = await quanLyPhimService.postFilmUploadHinh(data)
+      return result.data.content
     } catch (err) {
-      return rejectWithValue(err.response.data);
+      return rejectWithValue(err.response.data.content)
     }
   }
-);
-
-export const deleteFilm = createAsyncThunk(
-  "quanLiPhim/deleteFilm",
-  async (idFilm, { dispatch, rejectWithValue }) => {
+)
+export const xoaPhim = createAsyncThunk('quanLyPhim/xoaPhim',
+  async (data, { rejectWithValue }) => {
     try {
-      await quanLyPhimService.deleteFilm(idFilm);
-      alert("xoá phim thành công");
-      dispatch(getMovieList());
+      const result = await quanLyPhimService.xoaPhim(data)
+      return result.data.content
     } catch (err) {
-      return rejectWithValue(err.response.data);
+      return rejectWithValue(err.response.data)
     }
   }
-);
-export const postFilmUpdate = createAsyncThunk(
-  "quanLiPhim/postFilmUpdate",
-  async (formData, { dispatch, rejectWithValue }) => {
-    console.log(rejectWithValue);
+)
+export const postFilmUpDate = createAsyncThunk('quanLyPhim/postFilmUpDate',
+  async (data, { rejectWithValue }) => {
     try {
-      await quanLyPhimService.postFilmUpdate(formData);
-
-      alert("cập nhật thành công");
-      dispatch(getMovieList());
+      const result = await quanLyPhimService.postFilmUpDate(data)
+      return result.data.content
     } catch (err) {
-      return rejectWithValue(err.response.data);
+      return rejectWithValue(err.response.data.content)
     }
   }
-);
+)

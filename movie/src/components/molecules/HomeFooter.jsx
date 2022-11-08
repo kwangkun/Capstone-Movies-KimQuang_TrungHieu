@@ -7,7 +7,6 @@ import { getRapMovieList, useQuanLyRap } from '../../reducers/quanLyRap';
 export const HomeFooter = () => {
     const dispatch = useDispatch()
     const { rapList } = useQuanLyRap()
-    console.log({ rapList });
     const heThongRap = _.map(rapList, (heThongRap) => _.pick(heThongRap, ['maHeThongRap', 'tenHeThongRap', 'logo']))
     useEffect(() => {
         dispatch(getRapMovieList())
