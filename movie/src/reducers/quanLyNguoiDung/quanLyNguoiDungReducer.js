@@ -10,8 +10,8 @@ const initialState = {
     deleteUser: null, isFetchingdeleteUser: false, errDeleteUser: undefined,
     getUserInfo: null, isFetchingGetUserInfo: false,
     updateUserInfo: null, isFetchingUpdateUserInfo: false, errUpdateUserInfo: undefined,
-    userSearch: null, isFetchingUserSearch: false, //
-    userType: null, isFetchingUserType: false, //
+    userSearch: null, isFetchingUserSearch: false, 
+    userType: null, isFetchingUserType: false, 
 
 }
 
@@ -175,6 +175,7 @@ export const getUserListAction = createAsyncThunk(
     async (data, { rejectWithValue }) => {
         try {
             const result = await quanLyNguoiDungService.getUserList(data)
+            // console.log("layDanhSachNguoiDung", result.data.content);
             return result.data.content
         } catch (error) {
             return rejectWithValue(error.response.data)
