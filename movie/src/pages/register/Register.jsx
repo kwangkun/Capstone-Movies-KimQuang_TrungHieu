@@ -34,27 +34,32 @@ const Register = () => {
                                 <label className="block" htmlFor="Name">Tài Khoản<label>
                                     <input type="text" placeholder="Tài Khoản" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" {...register('taiKhoan')} />
                                 </label></label></div>
+                                <span className="text-xs text-red-400"></span>
                             <div className="mt-4">
                                 <label className="block">Mật Khẩu<label>
                                     <input type="password" placeholder="Mật Khẩu" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" {...register('matKhau')} />
                                 </label></label></div>
+                                <span className="text-xs text-red-400"></span>
                             <div className="mt-4">
                                 <label className="block" htmlFor="email">Email<label>
                                     <input type="text" placeholder="Email" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" {...register('email')} />
                                 </label></label></div>
+                                <span className="text-xs text-red-400"></span>
                             <div className="mt-4">
                                 <label className="block">Số Điện Thoại<label>
                                     <input type="text" placeholder="Số Điện Thoại" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" {...register('soDt')} />
                                 </label></label></div>
+                                <span className="text-xs text-red-400"></span>
                             <div className="mt-4">
                                 <label className="block">Mã Nhóm<label>
                                     <input type="text" placeholder="Mã Nhóm" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" {...register('maNhom')} />
                                 </label></label></div>
+                                <span className="text-xs text-red-400"></span>
                             <div className="mt-4">
                                 <label className="block">Họ Tên<label>
                                     <input type="text" placeholder="Họ Tên" className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" {...register('hoTen')} />
                                 </label></label></div>
-                            {/* <span className="text-xs text-red-400">Password must be same!</span> */}
+                            <span className="text-xs text-red-400"></span>
                             <div className="flex">
                                 <button className="w-full px-6 py-2 mt-4 text-white bg-blue-600 rounded-lg hover:bg-blue-900">Tạo Tài Khoản</button>
                             </div>
