@@ -1,25 +1,30 @@
 import { useForm } from 'react-hook-form'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { loginAction, quanLyNguoiDungActions } from '../../reducers/quanLyNguoiDung/quanLyNguoiDungReducer'
+import { loginAction } from '../../reducers/quanLyNguoiDung/quanLyNguoiDungReducer'
 import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
     const { register, handleSubmit } = useForm()
-    // const { userLogin } = useSelector((state => state.quanLyNguoiDungReducer))
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
 
+    const userLogin = useSelector((state) => state.quanLyNguoiDungReducer)
 
     useEffect(() => {
-        // if (userLogin) {
-        //     navigate(-1)
-        // }
-    })
-
-    let sCode = localStorage.getItem("SCODE")
-
-    const navigate = useNavigate()
-
-    const dispatch = useDispatch()
+        const user = JSON.parse(localStorage.getItem("USER_LOGIN"));
+        if (
+            localStorage.getItem("USER_LOGIN") &&
+            user.maLoaiNguoiDung === "KhachHang"
+        ) {
+            navigate(-1);
+        } else if (
+            localStorage.getItem("USER_LOGIN") &&
+            user.maLoaiNguoiDung === "QuanTri"
+        ) {
+            navigate("/admin");
+        }
+    }, [userLogin]);
 
     return (
         <div>
@@ -47,14 +52,7 @@ const Login = () => {
                             </svg>
                             <input type="password" id="password" className="bg-gray-200 pl-12 py-2 md:py-4 focus:outline-none w-full" placeholder="Mật Khẩu" {...register('matKhau')} />
                         </div>
-                        <button
-                            onClick={() => {
-                                if (sCode === '200') {
-                                    alert('Đăng nhập thành công!')
-                                    navigate(-1)
-                                }
-                            }}
-                            className="bg-gradient-to-b from-gray-700 to-gray-900 font-medium p-2 md:p-4 text-white uppercase w-full mt-4" >Đăng Nhập</button>
+                        <button className="bg-gradient-to-b from-gray-700 to-gray-900 font-medium p-2 md:p-4 text-white uppercase w-full mt-4" >Đăng Nhập</button>
                     </form>
                 </div>
             </div>

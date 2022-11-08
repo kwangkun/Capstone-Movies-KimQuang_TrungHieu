@@ -2,14 +2,14 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import { quanLyNguoiDungService } from "../../services/quanLyNguoiDungService"
 
 const initialState = {
-    userLogin: null, isFetchingUser: false,
-    userRegister: null, isFetchingUserRegister: false,
+    userLogin: null, isFetchingUser: false, errUserLogin: undefined,
+    userRegister: null, isFetchingUserRegister: false, errUserRegister: undefined,
     userInfo: null, isFetchingUserInfo: false,
     userList: null, isFetchingUserList: false,
-    addUser: null, isFetchingAddUser: false,
-    deleteUser: null, isFetchingdeleteUser: false,
+    addUser: null, isFetchingAddUser: false, errAddUser: undefined,
+    deleteUser: null, isFetchingdeleteUser: false, errDeleteUser: undefined,
     getUserInfo: null, isFetchingGetUserInfo: false,
-    updateUserInfo: null, isFetchingUpdateUserInfo: false,
+    updateUserInfo: null, isFetchingUpdateUserInfo: false, errUpdateUserInfo: undefined,
     userSearch: null, isFetchingUserSearch: false, //
     userType: null, isFetchingUserType: false, //
 
@@ -19,6 +19,30 @@ export const { reducer: quanLyNguoiDungReducer, action: quanLyNguoiDungActions }
     name: 'quanLyNguoiDung',
     initialState,
     reducers: {
+        login: (state, action) => {
+            state.errUserLogin = undefined
+        },
+        logout: (state, action) => {
+            state.userLogin = null
+            state.userRegister = null
+            localStorage.removeItem("USER_LOGIN")
+            localStorage.removeItem("ACCESS_TOKEN")
+        },
+        register: (state, action) => {
+            state.errUserRegister = undefined
+        },
+        addUser: (state, action) => {
+            state.errAddUser = undefined
+            state.addUser = null
+        },
+        updateUser: (state, action) => {
+            state.errUpdateUserInfo = undefined
+            state.updateUserInfo = null
+        },
+        deleteUser: (state, action) => {
+            state.errDeleteUser = undefined
+            state.deleteUser = null
+        },
     },
     extraReducers: (builder) => {
         builder
