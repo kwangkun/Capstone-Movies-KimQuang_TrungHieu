@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form, DatePicker, InputNumber, Select } from "antd";
-import { quanLyRapService } from "../../../services/quanLyRapService";
 import { useDispatch, useSelector } from "react-redux";
 import {
     layThongTinCumRapTheoHeThong,
@@ -15,13 +14,9 @@ export const CreateShowTime = () => {
     const dispatch = useDispatch();
     const [rap, setRap] = useState();
     const { maPhim, tenPhim } = useParams();
-    //
     useEffect(() => {
-        // return async () => {
         dispatch(layThongTinHeThongRap());
-        // };
     }, []);
-    //
     useEffect(() => {
         if (rap) {
             dispatch(layThongTinCumRapTheoHeThong(rap));
@@ -82,7 +77,7 @@ export const CreateShowTime = () => {
                 wrapperCol={{ span: 16 }}
                 initialValues={{ remember: true }}
             >
-                <h2 className="text-2xl mb-10">createshowtimes - {tenPhim}</h2>
+                <h2 className="text-2xl mb-10">Tên Phim - {tenPhim}</h2>
                 <Form.Item label="Hệ thống rạp">
                     <Select
                         onChange={handleChangeHeThongRap}
@@ -110,7 +105,7 @@ export const CreateShowTime = () => {
                 </Form.Item>
                 <Form.Item>
                     <Button className="ml-[25%]" type="primary" htmlType="submit">
-                        createshowtimes
+                        Tạo lịch chiếu
                     </Button>
                 </Form.Item>
             </Form>

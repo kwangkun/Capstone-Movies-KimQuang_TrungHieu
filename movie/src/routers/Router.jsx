@@ -13,12 +13,10 @@ import BookingTicket from '../pages/BookingTicket/BookingTicket'
 import Films from '../pages/admin/filmsAdmin/Films'
 import CreateFilms from '../pages/admin/filmsAdmin/CreateFilms'
 import CreateShowTime from '../pages/admin/filmsAdmin/CreateShowTime'
-
-// import FilmsAdmin from '../pages/admin/filmsAdmin/FilmsAdmin'
 import EditUser from '../pages/admin/usersAdmin/EditUser'
 import UserInformation from '../pages/userInformation/UserInformation'
+import EditFilms from '../pages/admin/filmsAdmin/EditFilms'
 
->>>>>>> 7f9e0f295532dc77763fbb4215ff979bba0512aa
 const Routers = () => {
     const routing = useRoutes([
         {
@@ -75,7 +73,6 @@ const Routers = () => {
 
                 },
                 {
-<<<<<<< HEAD
                     path: 'films',
                     element: <Films />
                 },
@@ -84,21 +81,23 @@ const Routers = () => {
                     element: <CreateFilms />
                 },
                 {
-                    path: 'createShowTime',
+                    path: 'createShowTime/:maPhim/:tenPhim',
                     element: <CreateShowTime />
-                }
+                },
 
-
-=======
+                {
                     path: 'user/edituser/:id',
                     element: <EditUser />
 
                 },
+                {
+                    path: 'editFilms/:maPhim',
+                    element: <EditFilms />
+                }
                 // {
                 //     path: 'films',
                 //     element: <FilmsAdmin />
                 // },
->>>>>>> 7f9e0f295532dc77763fbb4215ff979bba0512aa
             ]
         }
     ])

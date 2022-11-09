@@ -85,7 +85,6 @@ export const Films = () => {
                             title="delete"
                             onClick={() => {
                                 dispatch(deleteFilm(films.maPhim));
-                                // navigate("/admin");
                             }}
                             className="text-red-500 text-2xl"
                         >
@@ -117,9 +116,9 @@ export const Films = () => {
 
     return (
         <div>
-            <h3 className="text-3xl">moviemanager</h3>
+            <h3 className="text-3xl">Quản Lý Phim</h3>
             <Button onClick={() => navigate("/admin/CreateFilms")} className="mb-5">
-                addmovie
+                Thêm Phim
             </Button>
             <Search
                 placeholder="input search text"

@@ -32,7 +32,6 @@ export const { reducer: quanLyDatVeReducer, actions: quanLyDatVeActions } = crea
     },
     extraReducers: (builder) => {
         builder
-            // Lấy danh sách phòng vé
             .addCase(layDanhSachPhongVe.pending, (state, action) => {
                 state.isFetchDanhSachPhongVe = true
             }).addCase(layDanhSachPhongVe.fulfilled, (state, action) => {
@@ -42,7 +41,6 @@ export const { reducer: quanLyDatVeReducer, actions: quanLyDatVeActions } = crea
                 state.errDanhSachPhongVe = action.payload
                 state.isFetchDanhSachPhongVe = false
             })
-            // Đặt vé
             .addCase(datVe.pending, (state, action) => {
                 state.isFetchKetQuaDatVe = true
             }).addCase(datVe.fulfilled, (state, action) => {
@@ -53,18 +51,6 @@ export const { reducer: quanLyDatVeReducer, actions: quanLyDatVeActions } = crea
                 state.isFetchKetQuaDatVe = false
                 state.ketQuaDatVe = null
                 state.errKetQuaDatVe = action.payload
-            })
-            // tạo lịch chiếu
-            .addCase(taoLichChieu.pending, (state, action) => {
-                state.isFetchLichChieu = true
-            }).addCase(taoLichChieu.fulfilled, (state, action) => {
-                state.isFetchLichChieu = false
-                state.lichChieu = action.payload
-                state.errLichChieu = undefined
-            }).addCase(taoLichChieu.rejected, (state, action) => {
-                state.isFetchLichChieu = false
-                state.errLichChieu = action.payload
-                state.lichChieu = null
             })
     }
 });
@@ -89,13 +75,13 @@ export const datVe = createAsyncThunk('quanLyDatVe/datVe',
         }
     }
 )
-export const taoLichChieu = createAsyncThunk('quanLyDatVe/taoLichChieu',
-    async (data, { rejectWithValue }) => {
+export const taoLichChieu = createAsyncThunk(
+    "quanLiDatVe/taoLichChieu",
+    async (data, { }) => {
         try {
-            const result = await quanLyDatVeServices.taoLichChieu(data)
-            return result.data.content
+            const result = await quanLyDatVeServices.taoLichChieu(data);
+            alert(result.data.content);
         } catch (err) {
-            return rejectWithValue(err.response.data.content)
         }
     }
-)
+);

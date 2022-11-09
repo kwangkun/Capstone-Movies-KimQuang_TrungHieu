@@ -8,6 +8,6 @@ export const quanLyDatVeServices = {
         return api.post(`/api/QuanLyDatVe/DatVe`, danhSachVe)
     },
     taoLichChieu: (data) => {
-        return api.post(`/api/QuanLyDatVe/TaoLichChieu`, data)
-    }
+        return api.post(`QuanLyDatVe/TaoLichChieu`, data);
+    },
 }

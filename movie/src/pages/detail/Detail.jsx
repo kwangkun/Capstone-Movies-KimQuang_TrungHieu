@@ -11,7 +11,7 @@ import {
 } from "../../reducers/quanLyRap";
 import moment from "moment";
 
-const MovieDetail = () => {
+const Detail = () => {
     const [tabPosition, setTabPosition] = useState("left");
     const params = useParams();
     const navigate = useNavigate();
@@ -20,9 +20,11 @@ const MovieDetail = () => {
 
     const dispatch = useDispatch();
 
+    const { id } = useParams();
+
     useEffect(() => {
-        dispatch(getMovieDetail());
-        dispatch(getLichChieuMovieDetail());
+        dispatch(getMovieDetail(id));
+        dispatch(getLichChieuMovieDetail(id));
     }, []);
     return (
         <div>
@@ -208,4 +210,4 @@ const MovieDetail = () => {
     );
 };
 
-export default MovieDetail;
+export default Detail;

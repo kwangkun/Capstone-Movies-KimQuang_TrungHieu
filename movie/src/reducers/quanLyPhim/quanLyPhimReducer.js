@@ -130,7 +130,6 @@ export const postFilm = createAsyncThunk(
   }
 );
 
-// lấy thông tin phim về trang edit
 
 export const getInfoMovies = createAsyncThunk(
   "quanLyPhim/getInfoMovies",
@@ -165,7 +164,6 @@ export const deleteFilm = createAsyncThunk(
       alert("xoá phim thành công");
       dispatch(getMovieList());
     } catch (err) {
-      console.log(err.response.data);
       return rejectWithValue(err.response.data);
     }
   }

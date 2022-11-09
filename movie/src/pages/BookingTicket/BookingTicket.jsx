@@ -29,7 +29,7 @@ function ChonGhe() {
     }, [])
     useEffect(() => {
         window.scrollTo(0, 0)
-        dispatch(layDanhSachPhongVe(param.malichchieu))
+        dispatch(layDanhSachPhongVe(param.maLichChieu))
     }, [ketQuaDatVe])
 
     return (
@@ -58,7 +58,7 @@ function ChonGhe() {
                         <span className='whitespace-nowrap'><button className='ghe gheVip w-6 h-6' style={{ cursor: 'default' }}></button> <span>Ghế VIP</span></span>
                         <span className='whitespace-nowrap'><button className='ghe gheDangDat w-6 h-6' style={{ cursor: 'default' }}></button> <span>Ghế đang chọn</span></span>
                         <span className='whitespace-nowrap'><button className='ghe gheDaDat w-6 h-6' style={{ cursor: 'default' }}></button> <span>Ghế đã đặt</span></span>
-                        <span className='whitespace-nowrap'><button className='bg-blue-500 w-6 h-6 inline-block rounded-md shadow' style={{ cursor: 'default' }}></button> <span>Ghế đang có người chọn</span></span>
+                        <span className='whitespace-nowrap'><button className='bg- w-6 h-6 inline-block rounded-md shadow' style={{ cursor: 'default' }}></button> <span>Ghế đang có người chọn</span></span>
                     </div>
                 </div>
                 <div className='col-span-12 lg:col-span-4 border p-3 shadow-lg text-base'>
@@ -104,7 +104,7 @@ function ChonGhe() {
                     </div>
                     <div className='pt-3'>
                         <button onClick={() => {
-                            dispatch(datVe({ maLichChieu: param.malichchieu, danhSachVe: (danhSachGheDangDat[0] === undefined ? 'chưa chọn ghế' : danhSachVe) }))
+                            dispatch(datVe({ maLichChieu: param.maLichChieu, danhSachVe: (danhSachGheDangDat[0] === undefined ? 'chưa chọn ghế' : danhSachVe) }))
                         }} className='bg-amber-500 w-full font-bold text-xl py-2 rounded-xl text-white hover:bg-amber-700 transition duration-300'>Đặt vé</button>
                     </div>
                 </div>
@@ -190,7 +190,7 @@ const Container = styled.div`
          border-radius:5px;
          cursor: pointer;
          color:#fff;
-         background-color: #aaa;
+         background-color: black;
       }
          .gheDaDat{
             background-color:red !important;

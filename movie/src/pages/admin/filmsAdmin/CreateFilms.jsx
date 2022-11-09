@@ -227,7 +227,7 @@ const CreateFilms = () => {
                     type="primary"
                     className="bg-blue-400 text-white px-4 py-2 ml-[28%] rounded-md"
                 >
-                    addmovie
+                    Thêm Phim
                 </Button>
             </Form.Item>
         </Form>
