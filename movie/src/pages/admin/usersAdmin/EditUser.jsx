@@ -12,7 +12,7 @@ const EditUser = () => {
 
     useEffect(() => {
         dispatch(getUserInfoAction(param.id))
-        dispatch(quanLyNguoiDungActions.updateUserInfo())
+        dispatch(quanLyNguoiDungActions.updateUser())
     }, [])
     useEffect(() => {
         reset({

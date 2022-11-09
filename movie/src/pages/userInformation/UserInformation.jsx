@@ -1,4 +1,5 @@
 import { Collapse } from 'antd';
+import moment from 'moment';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { userInfoAction } from '../../reducers/quanLyNguoiDung';
@@ -37,7 +38,7 @@ const UserInformation = () => {
                                 <div className='col-span-8 pl-3 md:col-span-3'>
                                     <p className='m-0 text-xl font-bold text-amber-500'>{ve.tenPhim}</p>
                                     <p className='m-0 text-green-500'>Thời lượng phim: {ve.thoiLuongPhim}p</p>
-                                    {/* <p className='m-0 text-amber-500'>Ngày đặt: {moment(ve.ngayDat).format('HH:mm DD-MM-YYYY')}</p> */}
+                                    <p className='m-0 text-amber-500'>Ngày đặt: {moment(ve.ngayDat).format('HH:mm DD-MM-YYYY')}</p>
                                 </div>
                                 <div className='col-span-12 md:col-span-7 md:pl-3'>
                                     <p className='m-0 font-semibold'>Danh sách ghế</p>
