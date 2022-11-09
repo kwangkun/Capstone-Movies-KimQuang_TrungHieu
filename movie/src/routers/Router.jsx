@@ -10,16 +10,13 @@ import Login from '../pages/login/Login'
 import News from '../pages/news/News'
 import Register from '../pages/register/Register'
 import BookingTicket from '../pages/BookingTicket/BookingTicket'
-<<<<<<< HEAD
 import Films from '../pages/admin/filmsAdmin/Films'
 import CreateFilms from '../pages/admin/filmsAdmin/CreateFilms'
 import CreateShowTime from '../pages/admin/filmsAdmin/CreateShowTime'
-=======
-import FilmsAdmin from '../pages/admin/filmsAdmin/FilmsAdmin'
+
 import EditUser from '../pages/admin/usersAdmin/EditUser'
 import UserInformation from '../pages/userInformation/UserInformation'
 
->>>>>>> 7f9e0f295532dc77763fbb4215ff979bba0512aa
 const Routers = () => {
     const routing = useRoutes([
         {
@@ -75,7 +72,6 @@ const Routers = () => {
                     element: <UsersAdmin />
                 },
                 {
-<<<<<<< HEAD
                     path: 'films',
                     element: <Films />
                 },
@@ -86,18 +82,13 @@ const Routers = () => {
                 {
                     path: 'createShowTime',
                     element: <CreateShowTime />
-                }
+                },
 
-
-=======
+                {
                     path: 'user/edituser/:id',
                     element: <EditUser />
+
                 },
-                // {
-                //     path: 'films',
-                //     element: <FilmsAdmin />
-                // },
->>>>>>> 7f9e0f295532dc77763fbb4215ff979bba0512aa
             ]
         }
     ])
