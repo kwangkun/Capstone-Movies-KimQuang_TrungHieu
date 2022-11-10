@@ -29,7 +29,7 @@ function ChonGhe() {
     }, [])
     useEffect(() => {
         window.scrollTo(0, 0)
-        dispatch(layDanhSachPhongVe(param.maLichChieu))
+        dispatch(layDanhSachPhongVe(param.id))
     }, [ketQuaDatVe])
 
     return (
@@ -37,7 +37,7 @@ function ChonGhe() {
             <div className='grid grid-cols-12'>
                 <div className='col-span-12 lg:col-span-8 pb-5 lg:pr-5'>
                     <div>
-                        <div className='bg-amber-500 h-3'></div>
+                        <div className='bg-blue-500 h-3'></div>
                         <div className='w-11/12 h-0 m-auto text-center text-white text-xl border-b-[40px] border-gray-600 border-l-[30px] border-l-transparent border-r-[30px] border-r-transparent drop-shadow-[0_12px_10px_#757373]'>Màn hình</div>
                     </div>
                     <div className='pt-10 pb-3 text-center'>
@@ -58,17 +58,17 @@ function ChonGhe() {
                         <span className='whitespace-nowrap'><button className='ghe gheVip w-6 h-6' style={{ cursor: 'default' }}></button> <span>Ghế VIP</span></span>
                         <span className='whitespace-nowrap'><button className='ghe gheDangDat w-6 h-6' style={{ cursor: 'default' }}></button> <span>Ghế đang chọn</span></span>
                         <span className='whitespace-nowrap'><button className='ghe gheDaDat w-6 h-6' style={{ cursor: 'default' }}></button> <span>Ghế đã đặt</span></span>
-                        <span className='whitespace-nowrap'><button className='bg- w-6 h-6 inline-block rounded-md shadow' style={{ cursor: 'default' }}></button> <span>Ghế đang có người chọn</span></span>
+                        <span className='whitespace-nowrap'><button className='bg- w-6 h-6 inline-block rounded-md shadow ghe gheCoNguoiChon' style={{ cursor: 'default' }}></button> <span>Ghế đang có người chọn</span></span>
                     </div>
                 </div>
                 <div className='col-span-12 lg:col-span-4 border p-3 shadow-lg text-base'>
                     <div className='border-b text-center flex pb-3 items-center'>
                         <img src={thongTinPhim?.hinhAnh} alt="" className='w-1/4' />
-                        <p className='text-amber-500 font-bold text-4xl m-0 text-center flex-1'>{thongTinPhim?.tenPhim}</p>
+                        <p className='text-blue-500 font-bold text-4xl m-0 text-center flex-1'>{thongTinPhim?.tenPhim}</p>
                     </div>
                     <div className='border-b py-3 flex justify-between'>
                         <p className='m-0 font-semibold'>Ngày chiếu giờ chiếu</p>
-                        <p className='m-0 text-right'><span>{thongTinPhim?.ngayChieu}</span>-<span className='text-amber-500'>{thongTinPhim?.gioChieu}</span></p>
+                        <p className='m-0 text-right'><span>{thongTinPhim?.ngayChieu}</span>-<span className='text-blue-500'>{thongTinPhim?.gioChieu}</span></p>
                     </div>
                     <div className='border-b py-3 flex justify-between'>
                         <p className='m-0 font-semibold w-20'>Cụm rạp</p>
@@ -83,13 +83,13 @@ function ChonGhe() {
                         <p className='m-0'>{thongTinPhim?.tenRap}</p>
                     </div>
                     <div className='border-b py-3 flex justify-between'>
-                        <p className='m-0 font-semibold w-20 text-amber-500'>Ghế chọn</p>
+                        <p className='m-0 font-semibold w-20 text-blue-500'>Ghế chọn</p>
                         <div className='space-x-2 flex-1 text-right'>
                             {danhSachGheDangDat.map((ghe, i) => (
                                 <p className='m-0 font-semibold' key={i}>
-                                    {ghe.loaiGhe === 'Thuong' ? <span className='text-gray-500'>Thường</span> : <span className='text-amber-500'>{ghe.loaiGhe}</span>}<span>/</span>
+                                    {ghe.loaiGhe === 'Thuong' ? <span className='text-gray-500'>Thường</span> : <span className='text-blue-500'>{ghe.loaiGhe}</span>}<span>/</span>
                                     <span className='text-green-600'>số-{ghe.stt}</span><span>/</span>
-                                    <span className='text-amber-500'>Giá:{ghe.giaVe.toLocaleString()}đ</span>
+                                    <span className='text-blue-500'>Giá:{ghe.giaVe.toLocaleString()}đ</span>
                                 </p>
                             ))}
                         </div>
@@ -100,12 +100,12 @@ function ChonGhe() {
                     </div>
                     <div className='border-b py-3 flex justify-between items-center'>
                         <p className='m-0 font-semibold'>Tổng tiền</p>
-                        <p className='m-0 text-amber-500 text-3xl font-bold'>{danhSachGheDangDat.reduce((tongTien, ghe) => tongTien += ghe.giaVe, 0).toLocaleString()}đ</p>
+                        <p className='m-0 text-blue-500 text-3xl font-bold'>{danhSachGheDangDat.reduce((tongTien, ghe) => tongTien += ghe.giaVe, 0).toLocaleString()}đ</p>
                     </div>
                     <div className='pt-3'>
                         <button onClick={() => {
                             dispatch(datVe({ maLichChieu: param.maLichChieu, danhSachVe: (danhSachGheDangDat[0] === undefined ? 'chưa chọn ghế' : danhSachVe) }))
-                        }} className='bg-amber-500 w-full font-bold text-xl py-2 rounded-xl text-white hover:bg-amber-700 transition duration-300'>Đặt vé</button>
+                        }} className='bg-blue-500 w-full font-bold text-xl py-2 rounded-xl text-white hover:bg-lime-700 transition duration-300'>Đặt vé</button>
                     </div>
                 </div>
             </div>
@@ -136,10 +136,10 @@ function KetQuaDatVe() {
     return (
         <div className='KetQuaDatVe'>
             <div className='text-lg font-semibold border-b pb-3'>
-                <span>Tài khoản: </span><span className='text-amber-500 mr-2'>{ttTaiKhoan?.taiKhoan}</span>
-                <span>Email: </span><span className='text-amber-500 mr-2'>{ttTaiKhoan?.email}</span>
-                <span>Họ tên: </span><span className='text-amber-500 mr-2'>{ttTaiKhoan?.hoTen}</span>
-                <span>Số điện thoại: </span><span className='text-amber-500'>{ttTaiKhoan?.soDT}</span>
+                <span>Tài khoản: </span><span className='text-yellow-500 mr-2'>{ttTaiKhoan?.taiKhoan}</span>
+                <span>Email: </span><span className='text-yellow-500'>{ttTaiKhoan?.email}</span>
+                <span>Họ tên: </span><span className='text-yellow-500 mr-2'>{ttTaiKhoan?.hoTen}</span>
+                <span>Số điện thoại: </span><span className='text-yellow-500'>{ttTaiKhoan?.soDT}</span>
             </div>
             <div>
                 {ttTaiKhoan?.thongTinDatVe.map((ve, i) => (
@@ -148,15 +148,15 @@ function KetQuaDatVe() {
                             <img src={ve.hinhAnh} alt="" className='w-full' />
                         </div>
                         <div className='col-span-8 pl-3 md:col-span-3'>
-                            <p className='m-0 text-xl font-bold text-amber-500'>{ve.tenPhim}</p>
+                            <p className='m-0 text-xl font-bold text-blue-500'>{ve.tenPhim}</p>
                             <p className='m-0 text-green-500'>Thời lượng phim: {ve.thoiLuongPhim}p</p>
-                            <p className='m-0 text-amber-500'>Ngày đặt: {moment(ve.ngayDat).format('HH:mm DD-MM-YYYY')}</p>
+                            <p className='m-0 text-blue-500'>Ngày đặt: {moment(ve.ngayDat).format('HH:mm DD-MM-YYYY')}</p>
                         </div>
                         <div className='col-span-12 md:col-span-7 md:pl-3'>
                             <p className='m-0 font-semibold'>Danh sách ghế</p>
                             {ve.danhSachGhe.map((ghe, i) => (
                                 <div key={i}>
-                                    <span className='font-semibold'>Ghế: </span><span className='text-amber-500'>{ghe.tenGhe}</span><span>/</span>
+                                    <span className='font-semibold'>Ghế: </span><span className='text-blue-500'>{ghe.tenGhe}</span><span>/</span>
                                     <span className='text-amber-500'>{ghe.tenRap}</span><span>/</span><span className='text-amber-500'>{ghe.tenHeThongRap}</span>
                                 </div>
                             ))}
@@ -178,29 +178,32 @@ const Container = styled.div`
          padding:5px;
       }
          .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
-            color:#f59e0b;
+            color:#4169E1;
       }
          .ant-tabs-ink-bar{
-            background-color:#f59e0b;
+            background-color:#4169E1;
       }
          .ant-tabs-tab:hover{
-            color:#f59e0b;
+            color:#4169E1;
       }
          .ghe{
          border-radius:5px;
          cursor: pointer;
          color:#fff;
-         background-color: black;
+         background-color: gray;
       }
          .gheDaDat{
             background-color:red !important;
          cursor:no-drop
       }
          .gheDangDat{
-            background-color:green !important;
+            background-color:#4682B4 !important;
       }
-         .gheVip{
+         .gheVip{   
             background-color:orange;
+      }
+      .gheCoNguoiChon{
+        background-color: green !important;
       }
    }
 `

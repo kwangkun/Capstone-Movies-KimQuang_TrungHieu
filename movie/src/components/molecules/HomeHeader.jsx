@@ -11,21 +11,21 @@ export const HomeHeader = () => {
                 <ul className="items-stretch hidden space-x-3 lg:flex">
 
                     <li className="flex">
-                        <NavLink className="flex items-center px-4 -mb-1 text-white font-medium " to="/home"  >Home</NavLink>
+                        <NavLink className="flex items-center px-4 -mb-1 text-white font-medium " to="/home"  >Trang Chủ</NavLink>
                     </li>
                     <li className="flex">
-                        <NavLink className="flex items-center px-4 -mb-1   text-white  font-medium " to="/news" >News</NavLink>
+                        <NavLink className="flex items-center px-4 -mb-1   text-white  font-medium " to="/news" >Tin Tức</NavLink>
                     </li>
                     <li className="flex">
-                        <NavLink className="flex items-center px-4 -mb-1   text-white  font-medium" to="/contact" >Contact</NavLink>
+                        <NavLink className="flex items-center px-4 -mb-1   text-white  font-medium" to="/contact" >Liên Hệ</NavLink>
                     </li>
                 </ul>
                 <div className="items-center flex-shrink-0 hidden lg:flex">
                     <button className="self-center px-8 py-3 ">
-                        <NavLink to="login" className="text-white">Sign in</NavLink>
+                        <NavLink to="login" className="text-white">Đăng Nhập</NavLink>
                     </button>
                     <button className="self-center px-8 py-3  ">
-                        <NavLink to="register" className="text-white">Sign up</NavLink>
+                        <NavLink to="register" className="text-white">Đăng Ký</NavLink>
                     </button>
                 </div>
                 <button className="p-4 lg:hidden">

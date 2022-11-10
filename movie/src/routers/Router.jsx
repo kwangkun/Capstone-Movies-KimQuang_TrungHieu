@@ -93,11 +93,7 @@ const Routers = () => {
                 {
                     path: 'editFilms/:maPhim',
                     element: <EditFilms />
-                }
-                // {
-                //     path: 'films',
-                //     element: <FilmsAdmin />
-                // },
+                },
             ]
         }
     ])
