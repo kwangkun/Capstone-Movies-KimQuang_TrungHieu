@@ -104,7 +104,7 @@ function ChonGhe() {
                     </div>
                     <div className='pt-3'>
                         <button onClick={() => {
-                            dispatch(datVe({ maLichChieu: param.maLichChieu, danhSachVe: (danhSachGheDangDat[0] === undefined ? 'chưa chọn ghế' : danhSachVe) }))
+                            dispatch(datVe({ maLichChieu: param.id, danhSachVe: (danhSachGheDangDat[0] === undefined ? 'chưa chọn ghế' : danhSachVe) }))
                         }} className='bg-blue-500 w-full font-bold text-xl py-2 rounded-xl text-white hover:bg-lime-700 transition duration-300'>Đặt vé</button>
                     </div>
                 </div>
@@ -126,7 +126,7 @@ function ChonGhe() {
 
 function KetQuaDatVe() {
     const dispatch = useDispatch()
-    const { ttTaiKhoan } = useSelector(state => state.quanLyNguoiDungReducer)
+    const { userInfo } = useSelector(state => state.quanLyNguoiDungReducer)
     const { ketQuaDatVe } = useSelector(state => state.quanLyDatVeReducer)
 
     useEffect(() => {
@@ -136,13 +136,13 @@ function KetQuaDatVe() {
     return (
         <div className='KetQuaDatVe'>
             <div className='text-lg font-semibold border-b pb-3'>
-                <span>Tài khoản: </span><span className='text-yellow-500 mr-2'>{ttTaiKhoan?.taiKhoan}</span>
-                <span>Email: </span><span className='text-yellow-500'>{ttTaiKhoan?.email}</span>
-                <span>Họ tên: </span><span className='text-yellow-500 mr-2'>{ttTaiKhoan?.hoTen}</span>
-                <span>Số điện thoại: </span><span className='text-yellow-500'>{ttTaiKhoan?.soDT}</span>
+                <span>Tài khoản: </span><span className='text-yellow-500 mr-2'>{userInfo ? userInfo.taiKhoan : ''}</span>
+                <span>Email: </span><span className='text-yellow-500'>{userInfo ? userInfo.email : ""}</span>
+                <span>Họ tên: </span><span className='text-yellow-500 mr-2'>{userInfo ? userInfo.hoTen : ''}</span>
+                <span>Số điện thoại: </span><span className='text-yellow-500'>{userInfo ? userInfo.soDT : ""}</span>
             </div>
             <div>
-                {ttTaiKhoan?.thongTinDatVe.map((ve, i) => (
+                {userInfo?.thongTinDatVe.map((ve, i) => (
                     <div key={i} className='py-2 border-b grid grid-cols-12'>
                         <div className='col-span-4 md:col-span-2 lg:col-span-1'>
                             <img src={ve.hinhAnh} alt="" className='w-full' />
@@ -200,10 +200,10 @@ const Container = styled.div`
             background-color:#4682B4 !important;
       }
          .gheVip{   
-            background-color:orange;
+            background-color: orange;
       }
       .gheCoNguoiChon{
-        background-color: green !important;
+        background-color: green
       }
    }
 `

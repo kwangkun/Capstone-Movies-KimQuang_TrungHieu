@@ -5,13 +5,17 @@ const TokenCybersoft =
 const baseURL = `https://movienew.cybersoft.edu.vn/api/`;
 export const api = axios.create();
 api.interceptors.request.use((config) => {
-    config = {
+    let token = "";
+    if (localStorage.getItem("ACCESS_TOKEN")) {
+        token = "Bearer " + localStorage.getItem("ACCESS_TOKEN").replaceAll('"', '');
+    }
+    const _config = {
         ...config,
         headers: {
-            Authorization: "Bearer " + localStorage.getItem("TOKEN"),
+            Authorization: token,
             TokenCybersoft,
         },
         baseURL,
     };
-    return config;
+    return _config;
 });

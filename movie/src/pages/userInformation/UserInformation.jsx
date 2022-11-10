@@ -21,10 +21,10 @@ const UserInformation = () => {
                     <img src="https://st.quantrimang.com/photos/image/2017/04/08/anh-dai-dien-FB-200.jpg" alt="" className="w-40" />
                 </div>
                 <div className="pl-5">
-                    <p><span>Tài khoản: </span><span className='text-amber-500 mr-2'>{userInfo?.taiKhoan}</span><span className="text-blue-500 text-sm">( {userInfo?.loaiNguoiDung.tenLoai} )</span></p>
-                    <p><span>Email: </span><span className='text-amber-500 mr-2'>{userInfo?.email}</span></p>
-                    <p><span>Họ tên: </span><span className='text-amber-500 mr-2'>{userInfo?.hoTen}</span></p>
-                    <p><span>Số điện thoại: </span><span className='text-amber-500'>{userInfo?.soDT}</span></p>
+                    <p><span>Tài khoản: </span><span className='text-amber-500 mr-2'>{userInfo ? (userInfo.taiKhoan || "") : ""}</span><span className="text-blue-500 text-sm">( {userInfo ? userInfo?.loaiNguoiDung.tenLoai : ""} )</span></p>
+                    <p><span>Email: </span><span className='text-amber-500 mr-2'>{userInfo ? userInfo.email : ""}</span></p>
+                    <p><span>Họ tên: </span><span className='text-amber-500 mr-2'>{userInfo ? userInfo.hoTen : ""}</span></p>
+                    <p><span>Số điện thoại: </span><span className='text-amber-500'>{userInfo ? userInfo.soDT : ""}</span></p>
                 </div>
             </div>
             <Collapse accordion>
