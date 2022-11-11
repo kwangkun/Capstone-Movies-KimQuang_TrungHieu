@@ -51,7 +51,7 @@ const Detail = () => {
                     <div className="col-span-3 ">
                         <div className="container p-2 mx-auto sm:p-4 dark:text-gray-100">
                             <h2 className="mb-2 text-3xl font-semibold leading-tight text-white">
-                                Thong tin phim
+                                Thông tin phim
                             </h2>
                             <div className="overflow-x-auto">
                                 <table className="min-w-full  text-left">
@@ -67,7 +67,7 @@ const Detail = () => {
                                         </tr>
                                         <tr className="border-b border-opacity-20 dark:border-gray-700">
                                             <td>
-                                                <p style={{ fontSize: "12px" }}>mo ta :</p>
+                                                <p style={{ fontSize: "12px" }}>Mô Tả :</p>
                                             </td>
                                             <td>
                                                 <p>{movieDetail.moTa}</p>
@@ -75,7 +75,7 @@ const Detail = () => {
                                         </tr>
                                         <tr className="border-b border-opacity-20 dark:border-gray-700">
                                             <td>
-                                                <p style={{ fontSize: "12px" }}>Ngay khoi chieu :</p>
+                                                <p style={{ fontSize: "12px" }}>Ngày khởi chiếu :</p>
                                             </td>
                                             <td>
                                                 <p>
@@ -87,7 +87,7 @@ const Detail = () => {
                                         </tr>
                                         <tr className="border-b border-opacity-20 dark:border-gray-700">
                                             <td>
-                                                <p style={{ fontSize: "12px" }}>danh gia:</p>
+                                                <p style={{ fontSize: "12px" }}>Đánh giá:</p>
                                             </td>
                                             <td>
                                                 <p>{movieDetail.danhGia} / 10</p>

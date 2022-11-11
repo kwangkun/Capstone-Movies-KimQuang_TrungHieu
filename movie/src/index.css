@@ -25,7 +25,7 @@
 .detailMovie .box1 {
     margin: 120px auto 0 auto;
     background: rgba(16, 18, 27, 0.4);
-    border: 2px solid #e91e63;
+    border: 2px solid white;
     border-radius: 10px;
     backdrop-filter: blur(2px);
     color: aliceblue;
@@ -37,6 +37,6 @@
 
 .detailMovie .box2 {
     background: rgba(16, 18, 27, 0.4);
-    border: 2px solid #e91e63;
+    border: 2px solid white;
     border-radius: 10px;
 }

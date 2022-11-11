@@ -109,7 +109,6 @@ export const getMovieDetail = createAsyncThunk(
   async (idFilm, { rejectWithValue }) => {
     try {
       const result = await quanLyPhimService.getMovieDetail(idFilm);
-      console.log(result)
       return result.data.content;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -122,7 +121,6 @@ export const postFilm = createAsyncThunk(
     try {
       const result = await quanLyPhimService.postFilm(film);
       localStorage.setItem("addFilm", JSON.stringify(result.data.content));
-      console.log(3);
       alert("thêm phim thành công");
     } catch (error) {
       alert(error.response.data.content);
